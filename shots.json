@@ -1,5 +1,6 @@
 [
-  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
+  { "file": "1-tracker.jpg", "path": "/", "view": "tracker", "earned": [2, 16, 21, 30, 35], "guide": 17, "shield": true, "viewport": { "width": 1280, "height": 800 } },
+  { "file": "2-roadmap.jpg", "path": "/", "view": "roadmap", "shield": false, "viewport": { "width": 1280, "height": 800 } },
+  { "file": "3-missables.jpg", "path": "/", "view": "tracker", "kind": "missable", "guide": 28, "viewport": { "width": 1280, "height": 800 } },
+  { "file": "4-export.jpg", "path": "/", "view": "settings", "state": "backup imported", "viewport": { "width": 1280, "height": 800 } }
 ]
