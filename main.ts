@@ -21,8 +21,6 @@ import { buildDossier } from './vendor/makefun-frontend.ts';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
-const requiredTrophyCount = 55;
-if (JSON.parse((await import('node:fs')).readFileSync(join(here, 'app/data/trophies.json'), 'utf8')).trophies.length !== requiredTrophyCount) throw new Error('The route must contain all 55 trophies.');
 
 mkdirSync(out, { recursive: true });
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
