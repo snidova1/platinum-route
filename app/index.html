@@ -3,23 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
-<link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#174c3b">
+<title>Leonida Route Map · GTA VI Platinum Tracker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="identity"><span class="route-mark" aria-hidden="true">VI</span><div><h1>Leonida Route Map</h1><p>GTA VI / PS5 · Your road to all 55 trophies</p></div></div>
+  <div class="file-controls"><button id="export" type="button">Export JSON ↗</button><label class="import-button">Import JSON<input id="import" type="file" accept="application/json,.json"></label></div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+<main>
+  <section class="progress-strip" aria-label="Saved trophy progress">
+    <div class="total-progress"><strong id="progress">0 / 55</strong><span>trophies earned</span><div class="meter"><i id="meter-fill"></i></div><small id="save-status">Saved on this device</small></div>
+    <div id="grade-progress" class="grade-progress"></div>
+    <div class="point-progress"><strong id="points">0 / 1,350</strong><span>trophy points</span><small>All offline · no online trophies</small></div>
+  </section>
+  <nav class="view-tabs" aria-label="Guide views"><button id="tracker-tab" aria-pressed="true">Trophy checklist</button><button id="roadmap-tab" aria-pressed="false">Platinum roadmap →</button><span>55 official trophies · 28 hidden · 1 possible missable</span></nav>
+  <div class="checkpoint"><strong>CHAPTER 1 CHECKPOINT</strong><span>Meditate with Lucia before leaving Jason’s house.</span><button id="checkpoint-guide">Read the missable guide →</button></div>
+  <section class="filters" aria-label="Trophy filters">
+    <div id="kind-filters" class="kind-filters"></div>
+    <div class="filter-fields"><label class="search-label">Search trophies<input id="search" type="search" placeholder="Name, description or guide…"></label><label>Grade<select id="grade"><option value="all">All grades</option><option value="bronze">Bronze</option><option value="silver">Silver</option><option value="gold">Gold</option><option value="platinum">Platinum</option></select></label><div class="toggle-fields"><label><input id="spoilers" type="checkbox" checked> Spoiler shield</label><label><input id="hidden" type="checkbox" checked> Show hidden</label><label><input id="earned" type="checkbox" checked> Show earned</label></div></div>
+  </section>
+  <div id="tracker-view" class="workspace"><section class="checklist" aria-label="Trophy checklist"><div class="list-heading"><h2>Next on your route</h2><span id="results"></span></div><div id="rows"></div></section><aside id="guide" class="guide-panel" aria-label="Selected trophy guide"></aside></div>
+  <section id="roadmap-view" hidden aria-label="Platinum roadmap"></section>
+  <p id="notice" class="notice" role="status" aria-live="polite"></p>
+</main>
+<footer>Independent field guide · Sources beside every route · No account. No downloads. Your save stays here.<span>LEONIDA / SINGLE-PLAYER / 2026</span></footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
