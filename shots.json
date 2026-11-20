@@ -1,6 +1,5 @@
 [
-  { "file": "1-tracker.jpg", "path": "/", "view": "tracker", "guide": "Don't Touch My Deck", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-roadmap.jpg", "path": "/", "view": "roadmap", "exit": 1, "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-missables.jpg", "path": "/", "view": "missables", "kind": "missable", "guide": "Positive Mental Attitude", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "4-export.jpg", "path": "/", "view": "settings", "viewport": { "width": 1280, "height": 800 } }
+  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
+  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
+  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
 ]

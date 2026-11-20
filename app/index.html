@@ -1,137 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Leonida Route Map · GTA VI Trophy Guide</title>
-  <link rel="icon" href="shield.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="app.css">
-  <script type="module" src="app.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA VI trophy checklist</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <template id="grade-shape">
-    <svg viewBox="0 0 38 41" aria-hidden="true" focusable="false">
-      <path d="M1 5 9 2 19 5 29 2 37 5v17c0 7-6 13-18 18C7 35 1 29 1 22Z"/>
-      <path d="M2 12h34"/>
-    </svg>
-  </template>
-  <header class="masthead">
-    <div class="shell station">
-      <div class="identity">
-        <svg class="brand-shield" viewBox="0 0 64 68" aria-hidden="true">
-          <path d="M4 7 17 3 32 7 47 3 60 7v22c0 17-11 27-28 35C15 56 4 46 4 29Z" fill="none" stroke="currentColor" stroke-width="3"/>
-          <path d="M5 22h54M28 51l1-8m2-5 1-7m5 20-1-8m-1-5-1-7" fill="none" stroke="currentColor" stroke-width="3"/>
-        </svg>
-        <div>
-          <h1>Leonida Route Map</h1>
-          <p>Grand Theft Auto VI <span aria-hidden="true">/</span> PS5 trophy guide</p>
-        </div>
-      </div>
-      <nav aria-label="Guide views">
-        <button type="button" data-view="tracker" aria-current="page">Tracker</button>
-        <button type="button" data-view="roadmap">Roadmap</button>
-        <button type="button" data-view="settings">Export / import</button>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" class="shell" tabindex="-1">
-    <p id="load-status" role="status">Loading trophies…</p>
-    <section id="tracker" aria-label="Trophy tracker" hidden>
-      <section class="progress-strip" aria-label="Trophy progress">
-        <div class="completion">
-          <div class="progress-caption"><strong id="earned-total">0 / 55</strong><span>trophies earned</span></div>
-          <progress id="trophy-progress" value="0" max="55" aria-label="Trophies earned"></progress>
-        </div>
-        <div id="grade-progress" class="grade-progress"></div>
-        <div class="points"><strong id="points-total">0 / 0</strong><span>PSN trophy points</span></div>
-      </section>
-
-      <div class="workspace">
-        <section class="ledger" aria-labelledby="checklist-title">
-          <div class="ledger-heading">
-            <h2 id="checklist-title">Trophy checklist</h2>
-            <output id="result-count"></output>
-          </div>
-          <div class="filters" aria-label="Trophy filters">
-            <div id="kind-filters" class="kind-filters" role="group" aria-label="Trophy kind">
-              <button type="button" data-kind="all" aria-pressed="true">All</button>
-              <button type="button" data-kind="story" aria-pressed="false">Story</button>
-              <button type="button" data-kind="missable" aria-pressed="false">Missable</button>
-              <button type="button" data-kind="collectible" aria-pressed="false">Collectibles</button>
-              <button type="button" data-kind="activity" aria-pressed="false">Activities</button>
-              <button type="button" data-kind="misc" aria-pressed="false">Misc</button>
-            </div>
-            <div class="filter-fields">
-              <input id="search" type="search" aria-label="Search trophies" placeholder="Search trophies">
-              <select id="grade" aria-label="Filter by grade">
-                <option value="all">All grades</option>
-                <option value="bronze">Bronze</option>
-                <option value="silver">Silver</option>
-                <option value="gold">Gold</option>
-                <option value="platinum">Platinum</option>
-              </select>
-            </div>
-            <div class="filter-toggles">
-              <label title="Include trophies marked hidden by PlayStation"><input id="show-hidden" type="checkbox" checked> Show hidden</label>
-              <label><input id="show-earned" type="checkbox" checked> Show earned</label>
-              <label class="spoiler-toggle"><input id="spoilers" type="checkbox" checked> Spoiler shield</label>
-            </div>
-          </div>
-          <ul id="trophy-list" class="trophy-list" aria-label="Trophies"></ul>
-          <p id="empty-list" class="empty" hidden>No trophies match. Try a different search or filter.</p>
-        </section>
-
-        <aside class="field-column" aria-label="Selected trophy guide">
-          <button type="button" id="checkpoint" class="checkpoint">
-            <span class="warning-icon" aria-hidden="true">!</span>
-            <span><strong>Chapter 1 checkpoint</strong><small>One potentially missable trophy</small></span>
-            <span class="arrow" aria-hidden="true"></span>
-          </button>
-          <article id="field-guide" aria-labelledby="guide-name"></article>
-        </aside>
-      </div>
-    </section>
-
-    <section id="roadmap" aria-labelledby="roadmap-title" hidden>
-      <div class="page-heading">
-        <h2 id="roadmap-title">Road to platinum</h2>
-        <label class="roadmap-spoilers"><input id="route-spoilers" type="checkbox" checked> Spoiler shield</label>
-      </div>
-      <ol id="exit-signs" class="exit-signs" aria-label="Roadmap exits"></ol>
-      <button type="button" id="route-checkpoint" class="route-checkpoint">
-        <span class="warning-icon" aria-hidden="true">!</span>
-        <span><strong>Potentially missable · Positive Mental Attitude</strong><small>Chapter 1 only · Accept Lucia’s balcony meditation after Down to Earth.</small></span>
-        <span class="arrow" aria-hidden="true"></span>
-      </button>
-      <div id="route-details"></div>
-    </section>
-
-    <section id="settings" aria-labelledby="settings-title" hidden>
-      <div class="page-heading">
-        <div><h2 id="settings-title">Save &amp; settings</h2><p>Your trophy progress is saved in this browser.</p></div>
-      </div>
-      <div class="settings-grid">
-        <section class="settings-sheet">
-          <h3>Progress backup</h3>
-          <p>Export your earned trophies and spoiler setting to JSON. Import a backup to replace the progress in this browser.</p>
-          <div class="backup-actions">
-            <button type="button" id="export-backup" class="primary">Export JSON</button>
-            <button type="button" id="import-backup">Import JSON</button>
-            <input type="file" id="backup-file" accept=".json,application/json" hidden>
-          </div>
-          <p id="backup-status" role="status"></p>
-        </section>
-        <section class="settings-sheet">
-          <h3>Story spoilers</h3>
-          <label class="setting-toggle"><input id="settings-spoilers" type="checkbox" checked> Enable spoiler shield</label>
-          <p>The shield covers unearned story trophy names, descriptions and guides. Reveal a trophy individually from the checklist.</p>
-        </section>
-      </div>
-    </section>
-    <p id="storage-note" role="status" hidden></p>
-  </main>
+<header>
+  <h1>GTA VI trophy checklist</h1>
+  <p id="progress">0 of 55 earned</p>
+</header>
+<div class="controls">
+  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+  <button id="export" type="button">Export progress</button>
+  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
+</div>
+<table>
+  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+<script type="module" src="app.js"></script>
 </body>
 </html>

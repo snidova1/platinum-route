@@ -3,7 +3,7 @@
 // types a browser needs, refuses any path outside app/, and otherwise does nothing clever: this is a development
 // convenience, not a web server for the internet.
 import { createReadStream, statSync } from 'node:fs';
-import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
+import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,11 +29,7 @@ const MIME: Record<string, string> = {
   '.webmanifest': 'application/manifest+json',
 };
 
-export function createAppServer() {
-  return createServer(serveAppFile);
-}
-
-function serveAppFile(request: IncomingMessage, response: ServerResponse) {
+createServer((request, response) => {
   const url = new URL(request.url ?? '/', 'http://localhost');
   let pathname: string;
   try {
@@ -63,10 +59,6 @@ function serveAppFile(request: IncomingMessage, response: ServerResponse) {
     'cache-control': 'no-store',
   });
   createReadStream(file).pipe(response);
-}
-
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  createAppServer().listen(port, '127.0.0.1', () => {
-    console.log(`app/ is on http://localhost:${port}`);
-  });
-}
+}).listen(port, '127.0.0.1', () => {
+  console.log(`app/ is on http://localhost:${port}`);
+});
