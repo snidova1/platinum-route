@@ -1,91 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Leonida Route Map — GTA VI Trophy Tracker</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23174638' d='M0 0h32v32H0z'/%3E%3Cpath fill='%23fffdf4' d='M7 10l4-4 5 2 5-2 4 4-2 12-7 5-7-5z'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="app.css">
-  <script defer src="data/atlas.js"></script>
-  <script defer src="logbook.js"></script>
-  <script defer src="roadmap.js"></script>
-  <script defer src="tracker.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA VI trophy checklist</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to guide and tracker</a>
-  <div class="atlas">
-    <header class="masthead">
-      <div class="brand-sign">
-        <h1>Leonida Route Map</h1>
-        <p>GTA VI <span>·</span> PlayStation 5 trophy atlas</p>
-      </div>
-      <svg class="sign-art" viewBox="0 0 360 124" aria-hidden="true">
-        <path class="topo" d="M-2 93 38 87l31-21 38-1 32-32 37-2 30-20 54-3 36 21 67-8M30 125l25-17 40-2 33-17 43-1 36-23 37 2 42-15 74 6M102 42l-6-14 36-28m107 107 37 10 53-5 31-19"/>
-        <path class="route-casing" d="M8 112h63l51-48h84l39-38h105"/>
-        <path class="route-center" d="M8 112h63l51-48h84l39-38h105"/>
-        <path class="route-node" d="M58 106h12v12H58zm99-48h12v12h-12zm136-38h12v12h-12z"/>
-      </svg>
-      <div class="edition">55 TROPHIES<br>OFFLINE TRACKER</div>
-    </header>
-    <nav class="navigation" aria-label="Atlas views">
-      <button type="button" data-view="tracker" aria-current="page">Tracker</button>
-      <button type="button" data-view="roadmap">Platinum roadmap</button>
-      <button type="button" data-view="settings">Save &amp; settings</button>
-      <span id="save-status" role="status">Saved locally</span>
-    </nav>
-    <main id="main" tabindex="-1">
-      <section id="tracker" aria-label="Trophy tracker">
-        <section id="progress" aria-label="Trophy progress"></section>
-        <div id="notice" class="warning-strip">
-          <button type="button" data-kind="missable"><strong>CHAPTER 1 CHECKPOINT</strong><span>Balcony meditation before you leave</span></button>
-          <button type="button" data-view="settings" id="shield-state" class="shield-status">Spoiler shield ON</button>
-        </div>
-        <section class="filters" aria-label="Trophy filters">
-          <div class="kinds" id="kinds" role="group" aria-label="Trophy kind"></div>
-          <div class="filter-tools">
-            <input id="search" type="search" aria-label="Search trophies" placeholder="Search trophies">
-            <select id="grade" aria-label="Filter by grade">
-              <option value="all">All grades</option><option value="bronze">Bronze</option><option value="silver">Silver</option><option value="gold">Gold</option><option value="platinum">Platinum</option>
-            </select>
-            <label><input id="hidden-toggle" type="checkbox" checked> Show PSN hidden</label>
-            <label><input id="earned-toggle" type="checkbox" checked> Show earned</label>
-          </div>
-        </section>
-        <div class="spread">
-          <section class="ledger" aria-labelledby="list-title">
-            <header><h2 id="list-title">Trophy checklist</h2><span id="result-count" role="status"></span></header>
-            <ul id="trophy-list"></ul>
-          </section>
-          <aside id="guide" aria-label="Selected trophy guide"></aside>
-        </div>
-      </section>
-      <section id="roadmap" aria-labelledby="roadmap-title" hidden>
-        <header class="route-heading"><h2 id="roadmap-title" tabindex="-1">Road to platinum</h2><p>Follow the five chapters, then work the free-roam exits.</p></header>
-        <div id="route-map"></div>
-      </section>
-      <section id="settings" aria-labelledby="settings-title" hidden>
-        <header class="route-heading"><h2 id="settings-title" tabindex="-1">Save &amp; settings</h2><p>Keep a backup you can open in any browser running this atlas.</p></header>
-        <div class="settings-sheet">
-          <section>
-          <h3>Spoiler shield</h3>
-          <label class="setting"><input type="checkbox" id="spoiler-toggle" checked> Mask unearned story trophies</label>
-          <p>The shield also covers mission names in the roadmap and guide. Reveal a single trophy without exposing the rest.</p>
-          </section>
-          <section>
-          <h3>Progress file</h3>
-          <p>Export your checks and spoiler preference to JSON. Import replaces this browser’s current logbook.</p>
-          <div class="save-actions">
-            <button type="button" class="primary" id="export-save">Export JSON</button>
-            <button type="button" id="import-save">Import JSON</button>
-            <input id="save-file" type="file" accept=".json,application/json" hidden>
-          </div>
-          <p id="file-status" role="status"></p>
-          </section>
-        </div>
-      </section>
-    </main>
-    <footer>Leonida Route Map · Unofficial GTA VI companion</footer>
-    <noscript>Enable JavaScript to use the offline trophy logbook.</noscript>
-  </div>
+<header>
+  <h1>GTA VI trophy checklist</h1>
+  <p id="progress">0 of 55 earned</p>
+</header>
+<div class="controls">
+  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+  <button id="export" type="button">Export progress</button>
+  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
+</div>
+<table>
+  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+<script type="module" src="app.js"></script>
 </body>
 </html>
